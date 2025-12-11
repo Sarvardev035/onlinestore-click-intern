@@ -57,7 +57,10 @@ function createProductCard(product) {
     card.innerHTML = `
         <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='https://via.placeholder.com/150?text=Image+Not+Found'">
         <h3 class="product-title">${product.title}</h3>
-        <p class="product-price">$${product.price.toFixed(2)}</p>
+        <div class="product-price-container">
+            <div class="product-price-label">Price:</div>
+            <p class="product-price">$${product.price.toFixed(2)}</p>
+        </div>
         <button class="btn btn-add-to-cart" data-product-id="${product.id}" data-product-title="${product.title}" data-product-price="${product.price}" data-product-image="${product.image}">
             Add to Cart
         </button>
