@@ -11,7 +11,8 @@ A full-stack e-commerce demo application combining **Vanilla JavaScript** for pr
 
 #https://sarvardev035.github.io/onlinestore-click-intern/     here is the github pages link to see this  website 
 ### everything is full of fun no problem at all task was understandabla and some intelligence is enought 
-## Overview
+## Overview <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/92d4c021-1036-48e7-b21f-07a173afe11f" />
+
 
 Mini Marketplace showcases a modern web architecture where:
 - **Left Side**: Vanilla JavaScript fetches and displays products from FakeStore API
