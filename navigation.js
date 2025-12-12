@@ -15,6 +15,7 @@ function initializeNavigation() {
     setupAccountButton();
     setupHelpTooltip();
     setupSearchFunctionality();
+    setupLogoReset();
 }
 
 // ============================================
@@ -470,6 +471,32 @@ function performSearch() {
 
 function storeAllProducts(products) {
     allProducts = products;
+}
+
+// ============================================
+// Logo Reset to Home View
+// ============================================
+
+function setupLogoReset() {
+    const logo = document.querySelector('.logo');
+    if (!logo) return;
+
+    logo.style.cursor = 'pointer';
+
+    logo.addEventListener('click', () => {
+        currentFilter = 'all';
+
+        if (allProducts.length && typeof displayProducts === 'function') {
+            displayProducts(allProducts);
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach((link, index) => {
+            link.classList.toggle('active', index === 0);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // Initialize when DOM is ready
