@@ -6,6 +6,14 @@
 const PRODUCTS_API = 'https://fakestoreapi.com/products';
 const PRODUCTS_CONTAINER = document.getElementById('products-container');
 const CART_STORAGE_KEY = 'marketplace_cart';
+const MIN_DISCOUNT_PERCENT = 2;
+const MAX_DISCOUNT_PERCENT = 10;
+
+// Generates a deterministic discount per product so the UI and cart stay in sync
+function getProductDiscountPercent(productId) {
+    const spread = MAX_DISCOUNT_PERCENT - MIN_DISCOUNT_PERCENT + 1;
+    return (productId * 7) % spread + MIN_DISCOUNT_PERCENT;
+}
 
 // ============================================
 // Fetch Products from API
@@ -58,6 +66,7 @@ function displayProducts(products) {
 function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
+    const discountPercent = getProductDiscountPercent(product.id);
     
     card.innerHTML = `
         <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='https://via.placeholder.com/150?text=Image+Not+Found'">
@@ -66,6 +75,7 @@ function createProductCard(product) {
             <div class="product-price-label">Price:</div>
             <p class="product-price">$${product.price.toFixed(2)}</p>
         </div>
+        <p class="product-discount-note">Save ${discountPercent}% at checkout</p>
         <button class="btn btn-add-to-cart" data-product-id="${product.id}" data-product-title="${product.title}" data-product-price="${product.price}" data-product-image="${product.image}">
             Add to Cart
         </button>
@@ -92,8 +102,7 @@ function addToCart(product) {
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        // assign a random discount between 2% and 10% when first added
-        const discountPercent = Math.floor(Math.random() * 9) + 2; // 2..10
+        const discountPercent = getProductDiscountPercent(product.id);
 
         cart.push({
             id: product.id,

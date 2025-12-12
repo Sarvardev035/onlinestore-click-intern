@@ -247,7 +247,7 @@ body {
     margin: clamp(1rem, 3vh, 2.5rem) auto;
     padding: 0 clamp(1rem, 3vw, 3rem);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: minmax(320px, 60%) minmax(280px, 40%);
     gap: clamp(1.5rem, 3vw, 2.5rem);
     width: 100%;
     max-width: 1600px;
@@ -415,6 +415,19 @@ body {
     text-align: right;
     font-family: 'Courier New', monospace;
     letter-spacing: 0.5px;
+}
+
+.product-discount-note {
+    margin: 0.35rem 0 0.75rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 107, 53, 0.12);
+    color: #ff6b35;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    align-self: flex-end;
 }
 
 .btn {
